@@ -21,4 +21,9 @@ public class TownPresenter : MonoBehaviour
         SceneManager.LoadScene("Quest");
     }
     
+    public void OnShopButton()
+    {
+        Debug.Log("ボタンが押されました");
+        SceneManager.LoadScene("Shop");
+    }
 }

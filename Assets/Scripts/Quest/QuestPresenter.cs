@@ -46,10 +46,14 @@ public class QuestPresenter : MonoBehaviour
         playerModel.AttackTo(monsterModel);
         if(monsterModel.IsDead())
         {
-            //モンスターを削除
-            Destroy(monsterView.gameObject);
+            //モンスターを削除()
+            Destroy(monsterView.gameObject); ;
             //ATをあげる
             playerModel.UpAttackPoint();
+            //DFをあげる
+            playerModel.UpDefensePoint();
+            //Coinの取得
+            playerModel.GetCoin(monsterModel);
             //変更された攻撃力を正しく表示する
             playerStatusView.UpdateText(playerModel);
             //ボタンを出す
@@ -58,6 +62,7 @@ public class QuestPresenter : MonoBehaviour
         }
         monsterView.UpdateHPText(monsterModel);
     }
+
 
     void AttackToPlayer(MonsterModel monsterModel)
     {

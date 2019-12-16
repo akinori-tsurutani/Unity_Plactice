@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerModel
 {
@@ -18,6 +19,8 @@ public class PlayerModel
     int maxHP;
     int hp;
     int at;
+    int df;
+    public static int coin;
     int currentStage;
 
     public int MaxHP
@@ -35,6 +38,16 @@ public class PlayerModel
         get { return at; }
     }
 
+    public int DF
+    {
+        get { return df; }
+    }
+
+    public int Coin
+    {
+        get { return coin; }
+    }
+    
     public int CurrentStage
     {
         get { return currentStage; }
@@ -44,6 +57,8 @@ public class PlayerModel
         maxHP = 100;
         hp = maxHP;
         at = 5;
+        df = 2;
+        coin = 0;
         currentStage = 0;
     }
 
@@ -56,12 +71,25 @@ public class PlayerModel
     public void Damage(int damage)
     {
         Debug.Log("damage player");
-        hp = Mathf.Clamp(hp - damage, 0, maxHP);
+        hp = Mathf.Clamp(hp - (damage - df), 0, maxHP);
     }
 
     public void UpAttackPoint()
     {
         at++;
+    }
+
+    public void UpDefensePoint()
+    {
+        if(at % 2 == 0)
+        {
+            df++;
+        }
+    }
+
+    public void GetCoin(MonsterModel monsterModel)
+    {
+        coin += monsterModel.Coin;
     }
     //すすむともどるボタンに対応する関数を作成
     public void NextStage()

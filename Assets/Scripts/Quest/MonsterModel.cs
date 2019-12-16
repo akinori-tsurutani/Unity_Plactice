@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class MonsterModel
 {
+
     int maxHP;
     int hp;
     int at;
+    int df;
+    int coin;
 
+    
     public int MaxHP
     {
         get { return maxHP; }
@@ -23,11 +27,23 @@ public class MonsterModel
         get { return at; }
     }
 
+    public int DF
+    {
+        get { return df; }
+    }
+
+    public int Coin
+    {
+        get { return coin; }
+    }
+
     public MonsterModel()
     {
         maxHP = 10;
         hp = maxHP;
         at = 6;
+        df = 3;
+        coin = 2;
     }
 
     public void AttackTo(PlayerModel playerModel)
@@ -40,14 +56,17 @@ public class MonsterModel
     {
         Debug.Log("damage monster");
         //hp -= damage;
-        hp = Mathf.Clamp(hp - damage, 0, maxHP);
+        hp = Mathf.Clamp(hp - (damage - df), 0, maxHP);
     }
+
+
     public bool IsDead()
     {
-        if(hp <= 0)
+        if (hp <= 0)
         {
             return true;
         }
         return false;
+              
     }
 }
