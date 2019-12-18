@@ -19,3 +19,4 @@ Unity_Practice
  ・ 日本語と英語のlocalisation
  ・ Firebaseでアカウントとログイン作りましょう
  ・ アカウントのLeaderboard（全部のユーザのGoldとレベル見える）
+ ・ モバイルでインストールしよう
